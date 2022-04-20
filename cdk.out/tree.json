@@ -1,0 +1,274 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Construct",
+          "version": "1.147.0"
+        }
+      },
+      "defaut-vpc-flow-logs": {
+        "id": "defaut-vpc-flow-logs",
+        "path": "defaut-vpc-flow-logs",
+        "children": {
+          "DefaultVPC": {
+            "id": "DefaultVPC",
+            "path": "defaut-vpc-flow-logs/DefaultVPC",
+            "children": {
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet1",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet2",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              },
+              "PublicSubnet3": {
+                "id": "PublicSubnet3",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet3",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              },
+              "PublicSubnet4": {
+                "id": "PublicSubnet4",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet4",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              },
+              "PublicSubnet5": {
+                "id": "PublicSubnet5",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet5",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              },
+              "PublicSubnet6": {
+                "id": "PublicSubnet6",
+                "path": "defaut-vpc-flow-logs/DefaultVPC/PublicSubnet6",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.147.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.147.0"
+            }
+          },
+          "MyCustomLogGroup-default-vpc": {
+            "id": "MyCustomLogGroup-default-vpc",
+            "path": "defaut-vpc-flow-logs/MyCustomLogGroup-default-vpc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "defaut-vpc-flow-logs/MyCustomLogGroup-default-vpc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Logs::LogGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "retentionInDays": 365,
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "default-vpc-log-group"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-logs.CfnLogGroup",
+                  "version": "1.147.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-logs.LogGroup",
+              "version": "1.147.0"
+            }
+          },
+          "flow-log-role-default-vpc": {
+            "id": "flow-log-role-default-vpc",
+            "path": "defaut-vpc-flow-logs/flow-log-role-default-vpc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "defaut-vpc-flow-logs/flow-log-role-default-vpc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "vpc-flow-logs.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.CfnRole",
+                  "version": "1.147.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "defaut-vpc-flow-logs/flow-log-role-default-vpc/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "defaut-vpc-flow-logs/flow-log-role-default-vpc/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents",
+                                "logs:DescribeLogStreams"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::GetAtt": [
+                                  "MyCustomLogGroupdefaultvpcF6B550F1",
+                                  "Arn"
+                                ]
+                              }
+                            },
+                            {
+                              "Action": "iam:PassRole",
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::GetAtt": [
+                                  "flowlogroledefaultvpc569205EA",
+                                  "Arn"
+                                ]
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "flowlogroledefaultvpcDefaultPolicy80DF1E6F",
+                        "roles": [
+                          {
+                            "Ref": "flowlogroledefaultvpc569205EA"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnPolicy",
+                      "version": "1.147.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Policy",
+                  "version": "1.147.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-iam.Role",
+              "version": "1.147.0"
+            }
+          },
+          "FlowLog-default-vpc": {
+            "id": "FlowLog-default-vpc",
+            "path": "defaut-vpc-flow-logs/FlowLog-default-vpc",
+            "children": {
+              "FlowLog": {
+                "id": "FlowLog",
+                "path": "defaut-vpc-flow-logs/FlowLog-default-vpc/FlowLog",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::FlowLog",
+                  "aws:cdk:cloudformation:props": {
+                    "resourceId": "vpc-8c641ef1",
+                    "resourceType": "VPC",
+                    "trafficType": "ALL",
+                    "deliverLogsPermissionArn": {
+                      "Fn::GetAtt": [
+                        "flowlogroledefaultvpc569205EA",
+                        "Arn"
+                      ]
+                    },
+                    "logDestinationType": "cloud-watch-logs",
+                    "logGroupName": {
+                      "Ref": "MyCustomLogGroupdefaultvpcF6B550F1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnFlowLog",
+                  "version": "1.147.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ec2.FlowLog",
+              "version": "1.147.0"
+            }
+          },
+          "vpcId": {
+            "id": "vpcId",
+            "path": "defaut-vpc-flow-logs/vpcId",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.CfnOutput",
+              "version": "1.147.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "defaut-vpc-flow-logs/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "defaut-vpc-flow-logs/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.147.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.147.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.147.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "@aws-cdk/core.App",
+      "version": "1.147.0"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "Resources": {
+    "MyCustomLogGroupdefaultvpcF6B550F1": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "RetentionInDays": 365,
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "default-vpc-log-group"
+          }
+        ]
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "defaut-vpc-flow-logs/MyCustomLogGroup-default-vpc/Resource"
+      }
+    },
+    "flowlogroledefaultvpc569205EA": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "vpc-flow-logs.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "defaut-vpc-flow-logs/flow-log-role-default-vpc/Resource"
+      }
+    },
+    "flowlogroledefaultvpcDefaultPolicy80DF1E6F": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents",
+                "logs:DescribeLogStreams"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "MyCustomLogGroupdefaultvpcF6B550F1",
+                  "Arn"
+                ]
+              }
+            },
+            {
+              "Action": "iam:PassRole",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "flowlogroledefaultvpc569205EA",
+                  "Arn"
+                ]
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "flowlogroledefaultvpcDefaultPolicy80DF1E6F",
+        "Roles": [
+          {
+            "Ref": "flowlogroledefaultvpc569205EA"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "defaut-vpc-flow-logs/flow-log-role-default-vpc/DefaultPolicy/Resource"
+      }
+    },
+    "FlowLogdefaultvpcFlowLog9384156C": {
+      "Type": "AWS::EC2::FlowLog",
+      "Properties": {
+        "ResourceId": "vpc-8c641ef1",
+        "ResourceType": "VPC",
+        "TrafficType": "ALL",
+        "DeliverLogsPermissionArn": {
+          "Fn::GetAtt": [
+            "flowlogroledefaultvpc569205EA",
+            "Arn"
+          ]
+        },
+        "LogDestinationType": "cloud-watch-logs",
+        "LogGroupName": {
+          "Ref": "MyCustomLogGroupdefaultvpcF6B550F1"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "defaut-vpc-flow-logs/FlowLog-default-vpc/FlowLog"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWMzQ6CMBCEn4X7slhjwtWERC8mmvoEpFRSKF3SH4lp+u5akNN8MzuzDNmpxkNxbhdXim6soiArMT59K0bg0lGwQkLzMvfg5+ChIeO8DcLnbL8nyPOoqXcYb9RfLYU5F3ZOoNoJIye9/lr1QVqJT7YbJZDiiPGiafnNcv7HlBIY6iQOrnqzGmtkxeCUKm0wXk0S+aZfMSk0KcwAAAA="
+      },
+      "Metadata": {
+        "aws:cdk:path": "defaut-vpc-flow-logs/CDKMetadata/Default"
+      }
+    }
+  },
+  "Outputs": {
+    "vpcId": {
+      "Description": "the ID of the default VPC",
+      "Value": "vpc-8c641ef1"
+    }
+  }
+}

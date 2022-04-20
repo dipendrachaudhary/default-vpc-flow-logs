@@ -1,0 +1,174 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "default-vpc-flow-logs": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://885300287765/us-east-1",
+      "properties": {
+        "templateFile": "default-vpc-flow-logs.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/defaut-vpc-flow-logs/MyCustomLogGroup-default-vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "MyCustomLogGroupdefaultvpcF6B550F1",
+            "trace": [
+              "new LogGroup (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-logs/lib/log-group.ts:405:22)",
+              "new DefaultVpcFlowLogsStack (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/lib/default-vpc-flow-logs-stack.ts:24:22)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/bin/default-vpc-flow-logs.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Module.m._compile (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "main (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/defaut-vpc-flow-logs/flow-log-role-default-vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "flowlogroledefaultvpc569205EA",
+            "trace": [
+              "new Role (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-iam/lib/role.ts:358:18)",
+              "new DefaultVpcFlowLogsStack (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/lib/default-vpc-flow-logs-stack.ts:32:29)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/bin/default-vpc-flow-logs.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Module.m._compile (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "main (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/defaut-vpc-flow-logs/flow-log-role-default-vpc/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "flowlogroledefaultvpcDefaultPolicy80DF1E6F",
+            "trace": [
+              "new Policy (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Role.addToPrincipalPolicy (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-iam/lib/role.ts:399:28)",
+              "CloudWatchLogsDestination.bind (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-ec2/lib/vpc-flow-logs.ts:240:13)",
+              "new FlowLog (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-ec2/lib/vpc-flow-logs.ts:378:43)",
+              "new DefaultVpcFlowLogsStack (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/lib/default-vpc-flow-logs-stack.ts:36:5)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/bin/default-vpc-flow-logs.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Module.m._compile (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "main (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/defaut-vpc-flow-logs/FlowLog-default-vpc/FlowLog": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "FlowLogdefaultvpcFlowLog9384156C",
+            "trace": [
+              "new FlowLog (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/aws-ec2/lib/vpc-flow-logs.ts:389:21)",
+              "new DefaultVpcFlowLogsStack (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/lib/default-vpc-flow-logs-stack.ts:36:5)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/bin/default-vpc-flow-logs.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Module.m._compile (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "main (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/defaut-vpc-flow-logs/vpcId": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "vpcId",
+            "trace": [
+              "new DefaultVpcFlowLogsStack (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/lib/default-vpc-flow-logs-stack.ts:41:5)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/bin/default-vpc-flow-logs.ts:6:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Module.m._compile (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "main (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1099:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:77:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/defaut-vpc-flow-logs/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/stage.ts:180:23)",
+              "process.<anonymous> (/home/dipendra/DevOps/cdk/node_modules/@aws-cdk/core/lib/app.ts:131:45)",
+              "Object.onceWrapper (node:events:642:26)",
+              "process.emit (node:events:527:28)",
+              "process.emit (node:domain:475:12)",
+              "process.emit (/home/dipendra/DevOps/cdk/default-vpc-flow-logs/node_modules/source-map-support/source-map-support.js:516:21)"
+            ]
+          }
+        ]
+      },
+      "displayName": "defaut-vpc-flow-logs"
+    }
+  }
+}
